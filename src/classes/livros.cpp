@@ -21,7 +21,11 @@ void Livros::setAutor(std::string a){
     autor = a;
 }
 
+std::string Livros::getnomeLivro(){
+    return nomeLivro;
+}
 
-
-
+std::string Livros::getnomeAutor(){
+    return autor;
+}
 

@@ -6,14 +6,14 @@
 
 Usuario usuario;
 
-Livros livrosCadastrados[100][2];
+livrosCadastrados[100][2];
 
 Livros livro;
 
 
 Sistema::Sistema(){
     Livros livro1("João","Gabriel");
-    livrosCadastrado[0][0] = livro1;
+    livrosCadastrados[0][0] = livro1;
     livroDisponivel = true;
 }
 
@@ -26,7 +26,7 @@ bool Sistema::CriarConta(){
     }
 
     else {
-        usuario.pegarDadosUsuario();
+        pegarDadosUsuario();
     do {
         std::cout <<"Digite 1 para Criar conta!\n";
         std::cin >> e;
@@ -38,7 +38,7 @@ bool Sistema::CriarConta(){
 
     else if (e == 1){
         escolha = true;
-        return usuario.alunoCadastrado();
+        return isASlunoMatriculado();
         
     }
 
@@ -52,16 +52,16 @@ bool Sistema::CriarConta(){
 
 bool Sistema::SolicitarEmprestimo(){
     
-    if(usuario.VerificarUsuario()){
-        livro.dadosLivro();
+    if(VerificarUsuario()){
+        dadosLivro();
     
     for (int i = 0; i < 100; i++){
         for(int j = 0; j < 2; j++){
-            if (livrosCadastrados[i][0].nomeLivro == livro.nomeLivro && livrosCadastrados[i][1].autor == livro.autor){
-                if(livro.verificarLivroDisponivel()){
+            if (livrosCadastrados[i][0].nameLivro == getNamelivro() && livrosCadastrados[i][1].nameAutor == livro.autor){
+                if(verificarLivroDisponivel()){
                     std::cout<<"Livro está disponivel\n";
 
-                    if(usuario.alunoCadastrado()){
+                    if(usuario.isASlunoMatriculado()){
                         std::cout<<"Livro foi emprestado!\n";
                         return livro.PegarLivro();
                         break;
@@ -74,16 +74,16 @@ bool Sistema::SolicitarEmprestimo(){
 
                 else{
                     std::cout<<"Livro não está disponivel";
-                    return livro.livroDisponivel;
+                    return livroDisponivel;
                     break;
                 }
                 
             }
-            else if(livrosCadastrados[i][0].nomeLivro == livro.nomeLivro && livrosCadastrados[i][1].autor != livro.autor){
+            else if(livrosCadastrados[i][0].nameLivro == getNamelivro() && livrosCadastrados[i][1].getnomeAutor() != nameAutor){
                 std::cout<<"Nome do autor não corresponde ao livro!";
                 break;
             }
-            else if(livrosCadastrados[i][0].nomeLivro!= livro.nomeLivro && livrosCadastrados[i][1].autor == livro.autor){
+            else if(livrosCadastrados[i][0].nameLivro != getNamelivro() && livrosCadastrados[i][1].getnomeAutor() == nameAutor){
                 std::cout<<"Nome do livro não corresponde ao autor!";
                 break;
             }
@@ -171,17 +171,18 @@ bool Sistema::PegarLivro(){
     return livroDisponivel = false;
 }
 
-bool Sistema::dadosLivro(){
+std::string Sistema::dadosLivro(){
+    
     std::cin.ignore();
     std:: cout<<"\nAutor: ";
-    std:: getline(std::cin,livro.autor);
+    std:: getline(std::cin,nameAutor);
     
     std:: cout<<"Nome do Livro: ";
-    std:: getline(std::cin,livro.nomeLivro);
+    std:: getline(std::cin,livro.nameLivro);
 
 }
 
-bool Sistema::alunoCadastrado(){
+bool Sistema::isASlunoMatriculado(){
     return usuario.alunoMatriculado = true;
 }
 
