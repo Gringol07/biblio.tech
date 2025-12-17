@@ -1,31 +1,35 @@
 #ifndef SISTEMA_HPP
 #define SISTEMA_HPP
 #include <string>
-
+#include <vector>
+#include "../cabecalho/livros.hpp"
+#include "../cabecalho/autor.hpp"
 class Sistema{
     public:
-        //std::string n_usuario,CPF,num_matricula;
+        std::string nameAutor,nameLivro;
         bool escolha;
         bool livroDisponivel;
+        const int tamanho_vetor = 100;
+        
         Sistema();
-        Sistema(std::string autor, std::string nomeLivro);
-        std::string nameAutor,nameLivro;
+        Sistema(std::string nome_autor, std::string nome_livro);
+
         bool CriarConta ();
         bool SolicitarEmprestimo();
         bool RenovarEmprestimo();
         bool Devolucao();
         bool Renovacao();
         bool DevolverLivro();
-        bool DadosEmprestimo();
         bool verificarLivroDisponivel();
         bool PegarLivro();
-        std::string dadosLivro();
-        bool isASlunoMatriculado();
+        void buscarLivro();
+        bool isAlunoMatriculado();
         bool VerificarUsuario();
-        void pegarDadosUsuario();
+        void pegarDadosUsuario();  
+        std::vector <Livros> livrosCadastrados;
+        std::vector <Autor> autorCadastrado;
     private:
-        
-        Livros livrosCadastrados[100][2];
-
+        Livros nomeDoLivro;
+        Autor nomeDoAutor;
 };
 #endif

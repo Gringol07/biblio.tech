@@ -4,14 +4,19 @@
 #include "src/cabecalho/livros.hpp"
 #include "src/cabecalho/usuario.hpp"
 #include "src/cabecalho/sistema.hpp"
-
+#include "src/cabecalho/autor.hpp"
 int main(){
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
+
     Sistema sistema;
-    Livros livro;
+    
+    Sistema livro1("Flamengo","Gabriel");
+
+    
     int opcao;
-    std::cout<<sistema.livrosCadastrados[0][0].nome<<std::endl;
+   
+    
     std::cout<< "Bem vindo ao Sistema de  Livros da Biblioteca do IFPI\n";
     std::cout<< "Aqui você pode:|Pegar livros |Renovar empréstimo |Devolver Livro |";
     std::cout<<"\n";
